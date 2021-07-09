@@ -3,4 +3,5 @@
 - Les quantités d'ingrédients sont désormais affichées en fractions
 - Les unités des ingrédients sont automatiquement converties lors de la mise à l'échelle
 - Changement de système d'unités dans les paramètres de l'interface
+- Importation et exportation étendues
 - Corrections d'erreurs et améliorations
