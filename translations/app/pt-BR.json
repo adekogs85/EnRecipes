@@ -335,5 +335,6 @@
     "pcmps": "Planos de refeições (%s)",
     "pcrcs": "Receitas (%s)",
     "impt": "IMPORTAR",
-    "expt": "EXPORTAR"
+    "expt": "EXPORTAR",
+    "pclis": "Listas (cozinhas, categorias, unidades de porção e unidades)"
 }
