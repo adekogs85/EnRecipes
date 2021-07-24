@@ -22,7 +22,7 @@ There are some significant changes in this version. So, in order to continue, yo
 <p align="center">Please consider making a small donation to help fund the project. Developing an application, especially one that is open source and completely free, takes a lot of time and effort.
 <br>
 <br>
-<a href="https://www.vishnuraghav.com/donate/"><img alt="Donate to Vishnu Raghav" src="assets/Images/donate.svg" width="240"></a></p>
+<a href="https://www.vishnuraghav.com/donate/"><img alt="Donate to Vishnu Raghav" src="assets/Images/donate.svg" height="48"></a></p>
 <hr>
 <h3 align="center">Important Links</h3>
 <p align="center"><a href="https://github.com/vishnuraghavb/EnRecipes/wiki/User-Guide">User Guide</a> · <a href="https://github.com/vishnuraghavb/EnRecipes/blob/main/PRIVACY.md">Privacy Policy</a> · <a href="https://github.com/vishnuraghavb/EnRecipes/blob/main/CONTRIBUTING.md">Contribution Guide</a> · <a href="https://github.com/vishnuraghavb/EnRecipes/projects/1">Roadmap</a> · <a href="https://t.me/enrecipes/">Telegram Group</a> · <a href="https://enrecipes.vercel.app/">Website</a></p>
