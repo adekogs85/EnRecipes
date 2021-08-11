@@ -21,9 +21,9 @@ Funktionen:
 - Teile dein Rezept auf beliebige Weise als schön formatierte Nachricht mit anderen. Du kannst auch das Rezeptfoto teilen.
 - Gerät schütteln, um ein zufälliges Rezept anzuzeigen
 - Erstellen von Mahlzeitenplänen
-- Kochtimer
+- Kurzzeitwecker
 - Du kannst deine Rezepte importieren/exportieren
-- Hat Helle, dunkle und schwarze Designs
+- Hat helle, dunkle und schwarze Designs
 
 Höhepunkte:
 
