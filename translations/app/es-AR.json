@@ -99,5 +99,9 @@
     "impFail": "Importación fallida",
     "impBu": "Importar datos",
     "hr": "h",
-    "Healthy": "Saludable"
+    "Healthy": "Saludable",
+    "pht": "Foto de la receta",
+    "recPic": "Foto de la receta",
+    "recU": "Actualizadas:",
+    "recTitle": "Mi receta saludable"
 }
