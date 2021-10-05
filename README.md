@@ -1,3 +1,5 @@
+## ⏸️ This project has been PAUSED for an unknown period of time.
+
 #### :warning: IMPORTANT NOTICE for users with EnRecipes v1.3.2 or before:
 
 To continue receiving updates, please update your EnRecipes to the latest version.
