@@ -11,6 +11,7 @@
             <Label class="name tb tc" :text="'EnRecipes' | L" />
             <Label :text="getVersion" class="tb tc" />
 
+            <Label class="info tc tw lh4" text="by Vishnu Raghav B" />
             <Label class="info tc tw lh4" :text="'appInfo' | L" />
           </StackLayout>
         </v-template>
@@ -49,66 +50,71 @@
 </template>
 
 <script>
-import { Application, Observable, Utils } from "@nativescript/core";
-import { mapState } from "vuex";
+import { Application, Observable, Utils } from '@nativescript/core'
+import { mapState } from 'vuex'
 
 export default {
   computed: {
-    ...mapState(["icon", "RTL"]),
+    ...mapState(['icon', 'RTL']),
     items() {
       return [
         {},
         {},
         {
-          icon: "gh",
-          title: "gh",
-          url: "https://github.com/vishnuraghavb/EnRecipes",
+          icon: 'lang',
+          title: 'Official Website',
+          url: 'https://enrecipes.vercel.app',
+        },
+        // {
+        //   icon: 'gh',
+        //   title: 'gh',
+        //   url: 'https://github.com/vishnuraghavb/EnRecipes',
+        // },
+        {
+          icon: 'tg',
+          title: 'joinTG',
+          url: 'https://t.me/enrecipes',
         },
         {
-          icon: "tg",
-          title: "joinTG",
-          url: "https://t.me/enrecipes",
+          icon: 'help',
+          title: 'guide',
+          url: 'https://github.com/vishnuraghavb/EnRecipes-Wiki/wiki/User-Guide',
         },
         {
-          icon: "help",
-          title: "guide",
-          url: "https://github.com/vishnuraghavb/EnRecipes/wiki/User-Guide",
+          icon: 'priv',
+          title: 'priv',
+          url: 'https://github.com/vishnuraghavb/EnRecipes-Wiki/blob/main/PRIVACY.md',
         },
         {
-          icon: "priv",
-          title: "priv",
-          url: "https://github.com/vishnuraghavb/EnRecipes/blob/main/PRIVACY.md",
+          icon: 'don',
+          title: 'donate',
+          url: 'https://www.vishnuraghav.com/donate',
         },
-        {
-          icon: "don",
-          title: "donate",
-          url: "https://www.vishnuraghav.com/donate",
-        },
-        {
-          icon: "trans",
-          title: "trnsl",
-          url: "https://hosted.weblate.org/projects/enrecipes/app-translations",
-        },
+        // {
+        //   icon: "trans",
+        //   title: "trnsl",
+        //   url: "https://hosted.weblate.org/projects/enrecipes/app-translations",
+        // },
         {},
-      ];
+      ]
     },
     getVersion() {
-      let ctx = Application.android.context;
+      let ctx = Application.android.context
       return (
-        "v" +
+        'v' +
         ctx.getPackageManager().getPackageInfo(ctx.getPackageName(), 0)
           .versionName
-      );
+      )
     },
   },
   methods: {
     pgLoad({ object }) {
-      object.bindingContext = new Observable();
+      object.bindingContext = new Observable()
     },
     touch({ object, action }, url) {
-      this.touchFade(object, action);
-      if (action == "up") Utils.openUrl(url);
+      this.touchFade(object, action)
+      if (action == 'up') Utils.openUrl(url)
     },
   },
-};
+}
 </script>

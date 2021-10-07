@@ -60,14 +60,14 @@ export default {
           subTitle: localize(this.layout),
           action: this.setLayoutMode,
         },
-        {
-          type: "list",
-          icon: "layout",
-          rtl: 0,
-          title: "mSystem",
-          subTitle: localize(this.mSystem),
-          action: this.setMSystem,
-        },
+        // {
+        //   type: "list",
+        //   icon: "layout",
+        //   rtl: 0,
+        //   title: "mSystem",
+        //   subTitle: localize(this.mSystem),
+        //   action: this.setMSystem,
+        // },
         {},
       ];
     },
