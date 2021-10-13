@@ -15,8 +15,8 @@
 
 android {
   defaultConfig {
-    versionCode 2
-    versionName '2.0.1'
+    versionCode 3
+    versionName '2.0.2'
     minSdkVersion 23
     targetSdkVersion 30
     compileSdkVersion 30
