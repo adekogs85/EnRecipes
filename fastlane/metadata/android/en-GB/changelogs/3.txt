@@ -1,1 +1,1 @@
-- Fixed fdroid release
+- Fixed fdroid app
