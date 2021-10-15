@@ -1,13 +1,3 @@
-## :warning: Important Notice :warning:
-
-To continue receiving updates, please update your EnRecipes to v2.0.0
-
-There are some significant changes in this version. So, in order to continue, you must do the following:
-
-1. Export a full backup.
-2. Uninstall EnRecipes.
-3. Install v2.0.0 and Import your data.
-
 <p align="center"><a href="https://enrecipes.vercel.app"><img src="fastlane/metadata/android/en-GB/images/featureGraphic.png" width="100%"></a></p>
 
 <h1 align="center">A Simple, Offline Recipe Manager</h1>
