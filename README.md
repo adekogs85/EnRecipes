@@ -1,16 +1,14 @@
-## ⏸️ This project has been PAUSED for an unknown period of time.
+## :warning: Important Notice :warning:
 
-#### :warning: IMPORTANT NOTICE for users with EnRecipes v1.3.2 or before:
-
-To continue receiving updates, please update your EnRecipes to the latest version.
+To continue receiving updates, please update your EnRecipes to v2.0.0
 
 There are some significant changes in this version. So, in order to continue, you must do the following:
 
 1. Export a full backup.
 2. Uninstall EnRecipes.
-3. Install this version and Import your data.
+3. Install v2.0.0 and Import your data.
 
-<p align="center"><a href="https://enrecipes.vercel.app"><img src="fastlane/metadata/android/en-US/images/featureGraphic.png" width="100%"></a></p>
+<p align="center"><a href="https://enrecipes.vercel.app"><img src="fastlane/metadata/android/en-GB/images/featureGraphic.png" width="100%"></a></p>
 
 <h1 align="center">A Simple, Offline Recipe Manager</h1>
 <p align="center">EnRecipes is an open source, privacy-friendly digital cookbook that lets you create, manage and share your recipes.</p>
@@ -18,13 +16,13 @@ There are some significant changes in this version. So, in order to continue, yo
 <a href="https://www.gnu.org/licenses/gpl-3.0" alt="License: GPLv3"><img src="https://img.shields.io/badge/license-GPL%20v3-blue"></a> <a href="https://github.com/vishnuraghavb/EnRecipes/releases" alt="Release version"><img src="https://img.shields.io/github/v/release/vishnuraghavb/EnRecipes?color=ff5200"/></a> <a href="https://hosted.weblate.org/engage/enrecipes/">
 <img src="https://hosted.weblate.org/widgets/enrecipes/-/app-translations/svg-badge.svg" alt="Translation status" /></a>
 <p align="center">
-<a href="https://f-droid.org/packages/com.vishnuraghav.EnRecipes"><img src="assets/Images/fdroid-badge.png" height="80"/></a><a href="https://apt.izzysoft.de/fdroid/index/apk/com.vishnuraghav.EnRecipes"><img src="assets/Images/IzzyOnDroid-badge.png" height="80"/></a><a href="https://play.google.com/store/apps/details?id=com.vishnuraghav.EnRecipes"><img src="assets/Images/google-play-badge.png" height="80"/></a><br>You can also get the <a href="https://github.com/vishnuraghavb/EnRecipes/releases/latest">latest release on GitHub</a>
+<a href="https://play.google.com/store/apps/details?id=com.vishnuraghav.EnRecipes"><img src="assets/Images/google-play-badge.png" height="80"/></a><a href="https://apt.izzysoft.de/fdroid/index/apk/com.vishnuraghav.EnRecipes"><img src="assets/Images/IzzyOnDroid.png" height="80"/></a><br>You can also get the <a href="https://github.com/vishnuraghavb/EnRecipes/releases/latest">latest release on GitHub</a>
 </p>
 <h2 align="center">Enjoying EnRecipes?</h2>
 <p align="center">Please consider making a small donation to help fund the project. Developing an application, especially one that is open source and completely free, takes a lot of time and effort.
 <br>
 <br>
-<a href="https://www.vishnuraghav.com/donate/"><img alt="Donate to Vishnu Raghav" src="assets/Images/donate.svg" height="48"></a></p>
+<a href="https://www.vishnuraghav.com/donate/"><img alt="Donate to Vishnu Raghav" src="assets/Images/donate.svg" width="240"></a></p>
 <hr>
 <h3 align="center">Important Links</h3>
 <p align="center"><a href="https://github.com/vishnuraghavb/EnRecipes/wiki/User-Guide">User Guide</a> · <a href="https://github.com/vishnuraghavb/EnRecipes/blob/main/PRIVACY.md">Privacy Policy</a> · <a href="https://github.com/vishnuraghavb/EnRecipes/blob/main/CONTRIBUTING.md">Contribution Guide</a> · <a href="https://github.com/vishnuraghavb/EnRecipes/projects/1">Roadmap</a> · <a href="https://t.me/enrecipes/">Telegram Group</a> · <a href="https://enrecipes.vercel.app/">Website</a></p>
@@ -59,14 +57,14 @@ Please read the [User Guide](https://github.com/vishnuraghavb/EnRecipes/wiki/Use
 
 ## Screenshots
 
-| <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/1.png" width=276> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/2.png" width=276> |
+| <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/1.png" width=276> | <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/2.png" width=276> |
 | :---------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------: |
 |                               **Home - Light theme**                                |                                **Home - Dark theme**                                |
-| <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/3.png" width=276> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/4.png" width=276> |
+| <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/3.png" width=276> | <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/4.png" width=276> |
 |                                   **Recipe view**                                   |                                **Scale ingredients**                                |
-| <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/5.png" width=276> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/6.png" width=276> |
+| <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/5.png" width=276> | <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/6.png" width=276> |
 |                                   **Share menu**                                    |                                  **Meal Planner**                                   |
-| <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/7.png" width=276> | <img src="fastlane/metadata/android/en-US/images/phoneScreenshots/8.png" width=276> |
+| <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/7.png" width=276> | <img src="fastlane/metadata/android/en-GB/images/phoneScreenshots/8.png" width=276> |
 |                                  **Cooking Timer**                                  |                                      **About**                                      |
 
 ## Contribution

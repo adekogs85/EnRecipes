@@ -328,7 +328,4 @@
   <string name="aBtn">"AJOUTER"</string>
   <string name="About">"À propos"</string>
   <string name="aap">"Joindre une photo"</string>
-  <string name="sectRm">"Section removed"</string>
-  <string name="addSectBtn">"ADD SECTION"</string>
-  <string name="sect">"Section %1$s"</string>
 </resources>
