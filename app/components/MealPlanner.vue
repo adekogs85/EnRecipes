@@ -3,7 +3,7 @@
     <GridLayout rows="*, auto, auto" columns="*">
       <ScrollView
         @loaded="svLoad"
-        @scroll="svScroll($event)"
+        @scroll="!edit && svScroll($event)"
         rowSpan="3"
         scrollBarIndicatorVisible="false"
       >
@@ -171,7 +171,12 @@
           @tap="hasRecipes ? toggleEditMode() : randomMealPlan()"
           col="3"
         /> -->
-        <Button class="ico fab" :text="icon.plus" @tap="addMealPlan" col="4" />
+        <Button
+          class="ico fab end"
+          :text="icon.plus"
+          @tap="addMealPlan"
+          col="4"
+        />
       </RGridLayout>
       <SnackBar
         row="2"
@@ -199,7 +204,14 @@
 </template>
 
 <script lang="ts">
-import { Device, Frame, Observable, Screen, Utils } from "@nativescript/core";
+import {
+  Application,
+  Device,
+  Frame,
+  Observable,
+  Screen,
+  Utils,
+} from "@nativescript/core";
 import { mapState, mapActions } from "vuex";
 import ViewRecipe from "./ViewRecipe.vue";
 import EditRecipe from "./EditRecipe.vue";
@@ -266,6 +278,7 @@ export default {
         let sbHeight = idSbH > 0 ? resources.getDimensionPixelSize(idSbH) : 0;
         const metrics = new android.util.DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(metrics);
+        console.log(metrics.heightPixels - sbHeight);
         return Math.floor(
           Utils.layout.toDeviceIndependentPixels(
             metrics.heightPixels - sbHeight
@@ -278,6 +291,7 @@ export default {
           .getInsetsIgnoringVisibility(
             android.view.WindowInsets.Type.systemBars()
           );
+        console.log(metrics.getBounds().height() - top - bottom, top, bottom);
         return metrics.getBounds().height() - top - bottom;
       }
     },
@@ -439,13 +453,11 @@ export default {
       let scrollUp;
       let y = scrollY;
       if (y) {
-        if (!this.edit) {
-          scrollUp = y < this.scrollPos;
-          this.scrollPos = Math.abs(y);
-          let ab = this.appbar.translateY;
-          if (!scrollUp && ab == 0) this.animateBar(this.appbar, 0);
-          else if (scrollUp && ab == 64) this.animateBar(this.appbar, 1);
-        }
+        scrollUp = y < this.scrollPos;
+        this.scrollPos = Math.abs(y);
+        let ab = this.appbar.translateY;
+        if (!scrollUp && ab == 0) this.animateBar(this.appbar, 0);
+        else if (scrollUp && ab == 64) this.animateBar(this.appbar, 1);
         this.listView.isScrollEnabled = y >= object.scrollableHeight;
       }
     },

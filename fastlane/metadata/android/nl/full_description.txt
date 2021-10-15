@@ -1,3 +1,10 @@
+Update EnRecipes naar deze versie om updates te blijven ontvangen.
+
+Deze versie bevat enkele grote wijzigingen, dus moet je als volgt te werk gaan:
+1. Exporteer een volledige back-up;
+2. Verwijder EnRecipes;
+3. Installeer deze versie en importeer je gegevens.
+
 EnRecipes is een privacy-respecterend, open source digitaal kookboek waarmee je recepten kunt samenstellen, beheren en delen.
 
 Mogelijkheden:

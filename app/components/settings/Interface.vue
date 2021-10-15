@@ -1,9 +1,9 @@
 <template>
-  <Page @loaded="pageL" actionBarHidden="true">
+  <Page @loaded="pgLoad" actionBarHidden="true">
     <RGridLayout :rtl="RTL" rows="*, auto" columns="auto, *">
       <OptionsList title="intf" :items="items" />
       <GridLayout row="1" class="appbar rtl" rows="*" columns="auto, *">
-        <Button class="ico" :text="icon.back" @tap="$navigateBack()" />
+        <Button class="ico end" :text="icon.back" @tap="$navigateBack()" />
       </GridLayout>
       <Label rowSpan="2" class="edge hal rtl" @swipe="swipeBack" />
       <Label
@@ -32,7 +32,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["icon", "langs", "theme", "layout", "RTL", "mSystem"]),
+    ...mapState(["icon", "langs", "theme", "layout", "RTL"]),
     items() {
       return [
         {},
@@ -50,7 +50,7 @@ export default {
           rtl: 0,
           title: "Theme",
           subTitle: localize(ApplicationSettings.getString("theme", "sysDef")),
-          action: this.setTheme,
+          action: this.selectThemes,
         },
         {
           type: "list",
@@ -60,24 +60,15 @@ export default {
           subTitle: localize(this.layout),
           action: this.setLayoutMode,
         },
-        // {
-        //   type: "list",
-        //   icon: "layout",
-        //   rtl: 0,
-        //   title: "mSystem",
-        //   subTitle: localize(this.mSystem),
-        //   action: this.setMSystem,
-        // },
         {},
       ];
     },
   },
   methods: {
-    ...mapActions(["setT", "setL", "setRTL", "setMS"]),
-    pageL({ object }) {
+    ...mapActions(["setT", "setL", "setRTL"]),
+    pgLoad({ object }) {
       object.bindingContext = new Observable();
     },
-
     // LanguageSelection
     setAppLang() {
       let languages = this.langs.map((e) => e.title);
@@ -105,9 +96,8 @@ export default {
         }
       });
     },
-
     // ThemeSelection
-    setTheme() {
+    selectThemes() {
       this.$showModal(Action, {
         props: {
           title: "Theme",
@@ -126,7 +116,6 @@ export default {
         }
       });
     },
-
     // LayoutMode
     setLayoutMode() {
       this.$showModal(Action, {
@@ -137,19 +126,6 @@ export default {
         },
       }).then((mode) => {
         if (mode && this.layout !== mode) this.setL(mode.toLowerCase());
-      });
-    },
-
-    // MeasuringSystem
-    setMSystem() {
-      this.$showModal(Action, {
-        props: {
-          title: "mSystem",
-          list: ["mtrc", "imprl"],
-          selected: this.mSystem,
-        },
-      }).then((sys) => {
-        if (sys && this.mSystem !== sys) this.setMS(sys);
       });
     },
   },

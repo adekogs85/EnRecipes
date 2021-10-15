@@ -1,18 +1,18 @@
 <template>
-  <Page @loaded="pageL" actionBarHidden="true">
+  <Page @loaded="pgLoad" actionBarHidden="true">
     <RGridLayout :rtl="RTL" rows="*, auto" columns="auto, *">
       <OptionsList title="db" :items="items" />
       <GridLayout
         :hidden="toast || progress"
-        @loaded="appbarL"
+        @loaded="abLoad"
         row="1"
         class="appbar rtl"
         rows="*"
         columns="auto, *"
       >
-        <Button class="ico" :text="icon.back" @tap="$navigateBack()" />
+        <Button class="ico end" :text="icon.back" @tap="$navigateBack()" />
       </GridLayout>
-      <Toast :onload="toastL" :toast="toast" :action="hideBar" />
+      <Toast :onload="tbLoad" :toast="toast" :action="hideBar" />
       <RGridLayout
         :rtl="RTL"
         v-show="progress"
@@ -22,7 +22,7 @@
         columns="auto, *"
       >
         <ActivityIndicator :busy="!!progress" />
-        <RLabel margin="0 2" col="1" class="tb tw vc lh4" :text="progress" />
+        <RLabel margin="0 12" col="1" class="tb tw vc lh4" :text="progress" />
       </RGridLayout>
       <Label rowSpan="2" class="edge hal rtl" @swipe="swipeBack" />
       <Label
@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       backupFolder: 0,
-      progress: null,
+      progress: 0,
       toast: 0,
       appbar: 0,
       toastbar: 0,
@@ -117,7 +117,7 @@ export default {
       "unLinkBIs",
       "clearIS",
     ]),
-    pageL({ object }) {
+    pgLoad({ object }) {
       object.bindingContext = new Observable();
       const ContentResolver =
         Application.android.nativeApp.getContentResolver();
@@ -129,10 +129,10 @@ export default {
         this.backupFolder = null;
       }
     },
-    appbarL({ object }) {
+    abLoad({ object }) {
       this.appbar = object;
     },
-    toastL({ object }) {
+    tbLoad({ object }) {
       this.toastbar = object;
     },
 
@@ -180,7 +180,7 @@ export default {
       this.progress = localize("expip");
       this.hijackBackEvent();
       let date = new Date();
-      let intlDate =
+      let formattedDate =
         date.getFullYear() +
         "-" +
         ("0" + (date.getMonth() + 1)).slice(-2) +
@@ -194,13 +194,13 @@ export default {
       // Copy db file to EnRecipes folder
       utils.copyDBToExport();
 
-      let filename = `${localize("EnRecipes")}_${intlDate}.zip`;
+      let filename = `${localize("EnRecipes")}_${formattedDate}.zip`;
       let fromPath = path.join(knownFolders.documents().path, "EnRecipes");
       utils.Zip.zip(fromPath, this.backupFolder, filename)
         .then((res) => res && this.showExportSummary(filename))
         .catch((err) => {
           console.log("Backup error: ", err);
-          this.progress = 0;
+          this.progress = null;
           this.releaseBackEvent();
           this.setBackupFolder(1);
         });
@@ -213,7 +213,7 @@ export default {
           "EnRecipes.db"
         )
       );
-      this.progress = 0;
+      this.progress = null;
       this.releaseBackEvent();
       let description = localize("buto", `"${filename}"`);
       this.$showModal(Confirm, {
@@ -333,7 +333,7 @@ export default {
       } else this.failedImport(localize("buEmp"));
     },
     failedImport(description) {
-      this.progress = 0;
+      this.progress = null;
       this.releaseBackEvent();
       knownFolders.temp().clear();
       this.$showModal(Confirm, {
@@ -434,7 +434,7 @@ export default {
       });
     },
     showImportSummary() {
-      this.progress = 0;
+      this.progress = null;
       this.releaseBackEvent();
       let { found, imported, updated } = this.impSum;
       let exists = Math.abs(found - imported - updated) + updated;

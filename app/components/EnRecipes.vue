@@ -320,7 +320,7 @@
         @touch="() => null"
       >
         <Button
-          class="ico rtl"
+          class="ico rtl end"
           @tap="
             showSearch
               ? closeSearch()
@@ -377,14 +377,14 @@
         </StackLayout>
         <Button
           :hidden="showSearch || selectMode"
-          class="ico fab"
+          class="ico fab end"
           :text="icon.plus"
           col="5"
           @tap="addR"
         />
         <Button
           :hidden="!selectMode"
-          class="ico"
+          class="ico end"
           :text="icon.del"
           col="5"
           @tap="deleteSelection"
@@ -483,7 +483,7 @@ export default {
       let vm = this;
       function getIngredients(e) {
         return e.ingredients
-          .map((f) => f.value.toLowerCase())
+          .map((f) => f.item.toLowerCase())
           .join()
           .includes(vm.searchQuery);
       }
@@ -608,7 +608,6 @@ export default {
     },
     pgUnload() {
       if (this.shake) stopAccelerometerUpdates();
-      this.releaseBackEvent();
     },
     abLoad({ object }) {
       this.appbar = object;

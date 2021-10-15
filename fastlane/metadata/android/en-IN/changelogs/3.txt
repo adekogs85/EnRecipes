@@ -1,1 +1,4 @@
-- Fixed fdroid release
+Only for f-droid users:
+Fdroid release got messed up on the previous update.
+If you are on v2.1.0, please import your data from your backup file (created with v2.0.0) into this version. If you don't have a backup file, your chances of getting your recipes to work on this version are low.
+Sorry for the trouble!

@@ -386,8 +386,8 @@ export default new Vuex.Store({
       },
     ],
     shake: getNumber('shake', 1), // ShakeViewRandomRecipe
-    // ImportSummary
     impSum: {
+      // ImportSummary
       found: 0,
       imported: 0,
       updated: 0,
@@ -409,14 +409,8 @@ export default new Vuex.Store({
     planDel: getString('planDel', 'nvr'), // PlanDeletionCriteria
     edgeS: getNumber('edgeS', 1), // EdgeSwipe
     awakeV: getNumber('awakeV', 1), // AwakeViewer
-    mSystem: getString('mSystem', 'mtrc'), //MeasuringSystem
   },
   mutations: {
-    //SetMeasuringSystem
-    setMS(state, s) {
-      state.mSystem = s
-      setNumber('mSystem', s)
-    },
     // ToggleKeepAwakeOnRecipeViewer
     toggleAwakeV(state) {
       state.awakeV = +!state.awakeV
@@ -428,12 +422,12 @@ export default new Vuex.Store({
       setNumber('edgeS', state.edgeS)
     },
     // SetPlanDeletionCriteria
-    setPlanDel(state, s) {
+    setPlanDel(state, s: string) {
       state.planDel = s
       setString('planDel', s)
     },
     // SetPlannerViewMode
-    setPlannerV(state, s) {
+    setPlannerV(state, s: string) {
       state.plannerV = s
       setString('plannerV', s)
     },
@@ -442,7 +436,7 @@ export default new Vuex.Store({
       state.RTL = getNumber('RTL', 0)
     },
     // SetForegroundService
-    setFgS(state, n) {
+    setFgS(state, n: number) {
       state.FGS = n
     },
     // AddTimerPreset
@@ -457,7 +451,7 @@ export default new Vuex.Store({
       )
     },
     // DeleteTimerPreset
-    deleteTP(state, n) {
+    deleteTP(state, n: number) {
       let id = state.timerPs[n]
       state.timerPs.splice(n, 1)
       db.execute(`DELETE FROM timerPresets WHERE id = ${id}`)
@@ -514,21 +508,21 @@ export default new Vuex.Store({
       state.activeTs.splice(i, 1, o)
     },
     // RemoveActiveTimer
-    removeAT(state, n) {
+    removeAT(state, n: number) {
       state.activeTs.splice(n, 1)
     },
     // SetTimerDelay
-    setTD(state, n) {
+    setTD(state, n: number) {
       state.timerD = n
       setNumber('timerD', n)
     },
     // SetTimerSound
-    setTS(state, s) {
+    setTS(state, s: string) {
       state.timerS = s
       setString('timerS', JSON.stringify(s))
     },
     // SetTimerVibrate
-    setTV(state, n) {
+    setTV(state, n: number) {
       state.timerV = n
       setNumber('timerV', n)
     },
@@ -537,12 +531,12 @@ export default new Vuex.Store({
       for (const key in state.impSum) state.impSum[key] = 0
     },
     // SetFirstDayMonday
-    setFD(state, n) {
+    setFD(state, n: number) {
       state.startMon = n
       setNumber('startMon', n)
     },
     // SetTheme
-    setT(state, s) {
+    setT(state, s: string) {
       switch (s) {
         case 'sysDef':
           state.theme =
@@ -563,12 +557,12 @@ export default new Vuex.Store({
       state.selCuisine = state.selCategory = state.selTag = null
     },
     // SetLayout
-    setL(state, s) {
+    setL(state, s: string) {
       state.layout = s
       setString('layout', s)
     },
     // SetSortType
-    setST(state, s) {
+    setST(state, s: string) {
       state.sortT = s
     },
     // InitialiseRecipes
@@ -581,34 +575,6 @@ export default new Vuex.Store({
                 f.match(/tags|ingredients|instructions|combinations|notes/) &&
                 (e[f] = JSON.parse(e[f]))
             )
-            if (e.ingredients.length && !('type' in e.ingredients[0])) {
-              e.ingredients = e.ingredients.map(({ quantity, unit, item }) => {
-                return {
-                  id: utils.getRandomID(1),
-                  type: 1,
-                  quantity,
-                  unit,
-                  value: item,
-                }
-              })
-            }
-            if (e.instructions.length && !('type' in e.instructions[0])) {
-              e.instructions = e.instructions.map((e) => {
-                return {
-                  id: utils.getRandomID(1),
-                  type: 1,
-                  value: e,
-                }
-              })
-            }
-            if (e.notes.length && !('value' in e.notes[0])) {
-              e.notes = e.notes.map((e) => {
-                return {
-                  id: utils.getRandomID(1),
-                  value: e,
-                }
-              })
-            }
             state.recipes.push(e)
           })
         })
@@ -633,47 +599,16 @@ export default new Vuex.Store({
             r.image = r.imageSrc.replace('enrecipes', 'EnRecipes')
             delete r.imageSrc
           }
-          if (!('cuisine' in r)) r.cuisine = 'Undefined'
-          if (!('tags' in r)) r.tags = []
-          if (!('difficulty' in r)) r.difficulty = 'Easy'
-          if (!('rating' in r)) r.rating = 0
-          if (!('created' in r)) r.created = r.lastModified
+          if (!r.hasOwnProperty('cuisine')) r.cuisine = 'Undefined'
+          if (!r.hasOwnProperty('tags')) r.tags = []
+          if (!r.hasOwnProperty('difficulty')) r.difficulty = 'Easy'
+          if (!r.hasOwnProperty('rating')) r.rating = 0
+          if (!r.hasOwnProperty('created')) r.created = r.lastModified
           r.yieldQuantity = r.yield.quantity
           r.yieldUnit = r.yield.unit
           delete r.yield
           function getTime(d) {
             return new Date(d).getTime()
-          }
-          if (r.ingredients.length && !('type' in r.ingredients[0])) {
-            r.ingredients = r.ingredients.map(({ quantity, unit, item }) => {
-              return {
-                id: utils.getRandomID(1),
-                type: 1,
-                quantity,
-                unit,
-                value: item,
-              }
-            })
-          }
-          if (
-            r.instructions.length &&
-            !r.instructions[0].hasOwnProperty('type')
-          ) {
-            r.instructions = r.instructions.map((e) => {
-              return {
-                id: utils.getRandomID(1),
-                type: 1,
-                value: e,
-              }
-            })
-          }
-          if (r.notes.length && !r.notes[0].hasOwnProperty('value')) {
-            r.notes = r.notes.map((e) => {
-              return {
-                id: utils.getRandomID(1),
-                value: e,
-              }
-            })
           }
           r.lastTried = getTime(r.lastTried)
           r.lastModified = getTime(r.lastModified)
@@ -771,8 +706,9 @@ export default new Vuex.Store({
         )
         if (partition[0].length) createDocuments(partition[0])
         if (partition[1].length) updateDocuments(partition[1])
-      } else createDocuments(ao)
-
+      } else {
+        createDocuments(ao)
+      }
       state.impSum.found = ao.length
       state.impSum.imported = imported
       state.impSum.updated = updated
@@ -782,51 +718,7 @@ export default new Vuex.Store({
       let localRecipesIDs: string[], partition: any[]
       let imported = 0
       let updated = 0
-      const getUpdatedData = (data) => {
-        return data.map((recipe) => {
-          let r = Object.assign({}, recipe)
-          let ings = JSON.parse(r.ingredients)
-          let inss = JSON.parse(r.instructions)
-          let notes = JSON.parse(r.notes)
-          if (ings.length && !('type' in ings[0])) {
-            r.ingredients = JSON.stringify(
-              ings.map((e) => {
-                return {
-                  id: utils.getRandomID(1),
-                  type: 1,
-                  quantity: e.quantity,
-                  unit: e.unit,
-                  value: e.item,
-                }
-              })
-            )
-          }
-          if (inss.length && !inss[0].hasOwnProperty('type')) {
-            r.instructions = JSON.stringify(
-              inss.map((e) => {
-                return {
-                  id: utils.getRandomID(1),
-                  type: 1,
-                  value: e,
-                }
-              })
-            )
-          }
-          if (notes.length && !notes[0].hasOwnProperty('value')) {
-            r.notes = JSON.stringify(
-              notes.map((e) => {
-                return {
-                  id: utils.getRandomID(1),
-                  value: e,
-                }
-              })
-            )
-          }
-          return r
-        })
-      }
-      const createDocuments = (data) => {
-        data = getUpdatedData(data)
+      function createDocuments(data: any[]) {
         data.forEach((r) => {
           const cols = Object.keys(r).join(', ')
           const placeholder = Object.keys(r)
@@ -845,8 +737,7 @@ export default new Vuex.Store({
           state.recipes.push(r)
         })
       }
-      const updateDocuments = (data) => {
-        data = getUpdatedData(data)
+      function updateDocuments(data: any[]) {
         data.forEach((r) => {
           let recipeIndex = state.recipes
             .map((e, i) => {
@@ -888,7 +779,6 @@ export default new Vuex.Store({
         if (partition[0].length) createDocuments(partition[0])
         if (partition[1].length) updateDocuments(partition[1])
       } else createDocuments(ao)
-      console.log(ao.length)
       state.impSum.found = ao.length
       state.impSum.imported = imported
       state.impSum.updated = updated
@@ -1038,7 +928,7 @@ export default new Vuex.Store({
     importMPsJSON(state, ao) {
       let updatedMealPlans = []
       let newMealPlans = ao.filter((e) => {
-        if ('eventColor' in e) {
+        if (e.hasOwnProperty('eventColor')) {
           return !state.mealPlans.some((f) => {
             let d = new Date(e.startDate)
             let date = new Date(
@@ -1076,7 +966,7 @@ export default new Vuex.Store({
         p.recipeID = p.title
         p.quantity = 1
         p.note = null
-        if ('eventColor' in p) {
+        if (p.hasOwnProperty('eventColor')) {
           let d = new Date(p.startDate)
           p.date = new Date(
             d.getFullYear(),
@@ -1173,16 +1063,16 @@ export default new Vuex.Store({
       }
     },
     toggleState(state, { id, key, setDate }) {
-      let res = state.recipes
-      let i = res.findIndex((e) => e.id == id)
-      state.recipes[i][key] = +!res[i][key]
+      let i = state.recipes.findIndex((e) => e.id == id)
+      state.recipes[i][key] = state.recipes[i][key] ? 0 : 1
       db.execute(
-        `UPDATE recipes SET ${key} = ${res[i][key]} WHERE id = '${id}'`
+        `UPDATE recipes SET ${key} = ${state.recipes[i][key]} WHERE id = '${id}'`
       )
       if (setDate) {
-        let time = new Date().getTime()
-        state.recipes[i].lastTried = time
-        db.execute(`UPDATE recipes SET lastTried = ${time} WHERE id = '${id}'`)
+        state.recipes[i].lastTried = new Date().getTime()
+        db.execute(
+          `UPDATE recipes SET lastTried = ${state.recipes[i].lastTried} WHERE id = '${id}'`
+        )
       }
     },
     // UnLinkCombinations
@@ -1219,20 +1109,17 @@ export default new Vuex.Store({
         }
       })
     },
-    setCuisine(state, s) {
+    setCuisine(state, s: string) {
       state.selCuisine = s
     },
-    setCategory(state, s) {
+    setCategory(state, s: string) {
       state.selCategory = s
     },
-    setTag(state, s) {
+    setTag(state, s: string) {
       state.selTag = s
     },
   },
   actions: {
-    setMS({ commit }, s: string) {
-      commit('setMS', s)
-    },
     toggleAwakeV({ commit }) {
       commit('toggleAwakeV')
     },

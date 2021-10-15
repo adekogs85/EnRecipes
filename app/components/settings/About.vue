@@ -11,7 +11,6 @@
             <Label class="name tb tc" :text="'EnRecipes' | L" />
             <Label :text="getVersion" class="tb tc" />
 
-            <Label class="info tc tw lh4" text="by Vishnu Raghav B" />
             <Label class="info tc tw lh4" :text="'appInfo' | L" />
           </StackLayout>
         </v-template>
@@ -36,7 +35,7 @@
         </v-template>
       </ListView>
       <GridLayout row="1" class="appbar rtl" rows="*" columns="auto, *">
-        <Button class="ico" :text="icon.back" @tap="$navigateBack()" />
+        <Button class="ico end" :text="icon.back" @tap="$navigateBack()" />
       </GridLayout>
       <Label rowSpan="2" class="edge hal rtl" @swipe="swipeBack" />
       <Label

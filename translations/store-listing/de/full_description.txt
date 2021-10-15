@@ -1,5 +1,3 @@
-WICHTIGER HINWEIS für Nutzer mit EnRecipes v1.3.2 oder früher:
-
 Um weiterhin Aktualisierungen zu erhalten, aktualisiere bitte EnRecipes auf diese Version.
 
 In dieser Version gibt es einige wesentliche Änderungen. Um fortzufahren, musst du also Folgendes tun:
@@ -21,9 +19,9 @@ Funktionen:
 - Teile dein Rezept auf beliebige Weise als schön formatierte Nachricht mit anderen. Du kannst auch das Rezeptfoto teilen.
 - Gerät schütteln, um ein zufälliges Rezept anzuzeigen
 - Erstellen von Mahlzeitenplänen
-- Kurzzeitwecker
+- Kochtimer
 - Du kannst deine Rezepte importieren/exportieren
-- Hat helle, dunkle und schwarze Designs
+- Hat Helle, dunkle und schwarze Designs
 
 Höhepunkte:
 
